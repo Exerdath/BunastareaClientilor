@@ -61,9 +61,11 @@ def login():
         return jsonify({'msg': 'No user or password provided'}), 400
 
     user = User(username=username, password_hash=password)
-    userDb=db.session.query(User).filter_by(username=user.username)
+    userDb=db.session.query(User).filter_by(username=user.username).filter_by(password_hash=user.password_hash).first()
     if userDb is not None:
         return jsonify({'msg': 'Got into Narnia, Good Job mate!'}), 200
+    else:
+        return jsonify({'msg': 'Failed!'}), 403
 
 
 if __name__ == '__main__':
