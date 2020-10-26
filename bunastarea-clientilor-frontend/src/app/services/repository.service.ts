@@ -7,16 +7,6 @@ export class RepositoryService{
     constructor(public httpClient:HttpClient){
     }
 
-
-
-    public login(body:any){
-        return this.httpClient.post('http://localhost:8080/login',body,{observe:'response'});
-    }
-
-    public logout() {
-        return this.httpClient.post("http://localhost:8080/logout", null);
-    }
-
     public isLoggedIn(){
         if(localStorage.getItem('user')!=null)
             return true;
