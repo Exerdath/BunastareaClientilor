@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   public loginUser(loginFormValue) {
     this.repositoryService.create("login",loginFormValue).subscribe((res :any) => {
       if (res.msg !== 'Failed') {
-        localStorage.setItem("user",res.headers.get("authorization"));
         this.router.navigate(["/home"]);
       }
     })
