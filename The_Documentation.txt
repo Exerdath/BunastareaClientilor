@@ -1,0 +1,432 @@
+%latex model.tex
+%bibtex model
+%latex model.tex
+%latex model.tex
+%pdflatex model.tex
+
+%se poate lucra si online (de ex www.overleaf.com)
+
+
+\documentclass[runningheads,a4paper,11pt]{report}
+
+\usepackage{algorithmic}
+\usepackage{algorithm} 
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{caption}
+\usepackage{comment} 
+\usepackage{epsfig} 
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{geometry} 
+\usepackage{graphicx}
+\usepackage[colorlinks]{hyperref} 
+\usepackage[latin1]{inputenc}
+\usepackage{multicol}
+\usepackage{multirow} 
+\usepackage{rotating}
+\usepackage{setspace}
+\usepackage{subfigure}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{xcolor}
+
+\geometry{a4paper,top=3cm,left=2cm,right=2cm,bottom=3cm}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{Segmenting Customers}
+\fancyhead[RE,LO]{TBA Name}
+\fancyfoot[RE,LO]{MIRPR 2020-2021}
+\fancyfoot[LE,RO]{\thepage}
+
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{%
+  \color{lime}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrule}{\hbox to\headwidth{%
+  \color{lime}\leaders\hrule height \footrulewidth\hfill}}
+
+\hypersetup{
+pdftitle={artTitle},
+pdfauthor={name},
+pdfkeywords={pdf, latex, tex, ps2pdf, dvipdfm, pdflatex},
+bookmarksnumbered,
+pdfstartview={FitH},
+urlcolor=cyan,
+colorlinks=true,
+linkcolor=red,
+citecolor=green,
+}
+% \pagestyle{plain}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\linespread{1}
+
+% \pagestyle{myheadings}
+
+\makeindex
+
+
+\begin{document}
+
+\begin{titlepage}
+\sloppy
+
+\begin{center}
+BABE\c S BOLYAI UNIVERSITY, CLUJ NAPOCA, ROM\^ ANIA
+
+FACULTY OF MATHEMATICS AND COMPUTER SCIENCE
+
+\vspace{6cm}
+
+\Huge \textbf{Customer\\ Segmentation}
+
+\vspace{1cm}
+
+\normalsize -- MIRPR report --
+
+\end{center}
+
+
+\vspace{5cm}
+
+\begin{flushright}
+\Large{\textbf{Team members}}\\
+Ciprian Cuibus - Back End - Report - ciprian.cuibus1@gmail.com\\
+Aurel Nicolescu - Back End -Report - nicolescu.aurel.7@gmail.com\\
+Titus Trif  - Front End - ttitus\_97@yahoo.com\\
+Alexandru Pintican - Front End -andreipintican@gmail.com\\
+\end{flushright}
+
+\vspace{4cm}
+
+\begin{center}
+2020-2021
+\end{center}
+
+\end{titlepage}
+
+\pagenumbering{gobble}
+
+\begin{abstract}
+	Text of abstract. Short info about: 
+	\begin{itemize}
+		\item project relevance/importance, 
+		\item inteligent methods used for solving, 
+		\item data involved in the numerical experiments; 
+		\item conclude by the the results obtained.
+	\end{itemize}
+
+	Please add a graphical abstract of your work. 
+\end{abstract}
+
+
+\tableofcontents
+
+\newpage
+
+\listoftables
+\listoffigures
+\listofalgorithms
+
+\newpage
+
+\setstretch{1.5}
+
+
+
+\newpage
+
+\pagenumbering{arabic}
+
+
+ 
+
+
+\chapter{Introduction}
+\label{chapter:introduction}
+
+\section{What? Why? How?}
+\label{section:what}
+
+\begin{itemize}
+	\item The world of e-commerce is a tough one, as there are hundreds of thousands of online shops, hundreds targeting the same clients and trying to out compete their rivals. For doing this, one of the best ways is having loyal customers, and what is a better way to keep a customer buying products from you than having targeted discounts that are exactly what the person wants? 
+
+	\item But how do businesses know what ads/recommendations to send their clients? This process of “getting to know the customer” is named customer segmentation
+
+	\item The project is used to segment customers into similar groups, for a better recommendation of different products.
+
+    \item There is actually no real need to use an intelligent algorithm for this kind of task, someone can just spend days and weeks finding good recommendations for each customer, but since this is no real solution that plagues all sale companies/ markets, the competition dictates a smart solution for this problem.
+
+    \item The scientific problem was finding a good algorithm for dividing the users into groups. This can be done through a number of algorithms, but after researching a bit on qualified articles we have found that K Means Clustering (more on that later in the report) is at the moment the best fit for this.
+\end{itemize}
+
+
+\section{Paper structure and original contribution(s)}
+\label{section:structure}
+
+The research presented in this paper advances the use of K Means Clustering into the Customer Segmentation problem. As this is a real world problem we have used a real world dataset to help us test our results using different parameters. And for this specific dataset we came up with a specific number of clusters that we obtained through a specific clearance of data, adding new derived features and normalization
+
+We have implemented into a small application the algorithm to help us suggest to different users the right kind of items
+
+The present work contains $xyz$ bibliographical references and is structured in five chapters as follows. //TODO
+\begin{itemize}
+    \item The first chapter is a short introduction in the problem at hand and a small idea of how to work around it.
+
+    \item The second chapter describes the problem in more details and a scientific solution that is possible at this time and we would like to test it out.
+
+    \item The third chapter details the current state of the art in the world of e-commerce businesses. 
+
+    \item The fourth chapter describes our algorithm and how we came up with it and with different parameters that we have used in implementing it. 
+
+
+    \item The fifth chapter is a discussion on our application, methodology and dataset used, and the results of it being used on the aforementioned UCI dataset.
+
+    \item The sixth and final chapter illustrates the conclusion of our experiment and possible the future work, with which we can expand our application.
+\end{itemize}
+
+
+
+\textbf{ Deci aici o sa scriem structura lucrarii, si ce contributii am avut noi
+\begin{itemize}
+    \item Prezentam alogirmtul
+    \item Ce aplicatie am facut pe baza lui
+    \item Ce referinte bibliografice am avut
+    \item Prezentam pe scurt capitolele
+    \begin {itemize}
+        \item capitolul 1 scurta prezentare si introducere
+        \item capitolul 2 - descriem problema stiintifica --> segmentare-recomandare
+        \item aratam cum a punem in practica cu clientii
+        \item capitolul 3 - ce s-a mai facut in domeniul asta 
+        \item putem pune de GroupLens - Yt - emag daca gasim - ceva articole
+        \item capitolul 4 - descirem algorimtul nostru, Ce face pe db-ul luat cu customers si invoices
+        \item capitolul 5 - aplicatia noastra - algorimtul nostru cu alti clusteri, fara curatenie sau normalizare
+        \item evenutal mai gasim ceva algoritm mai prost dar sa aratam date
+        \item ne interesam de cum se face validarea, analiza rezultatelor, silhuette si ARI measurements
+        \item descriem ce dataset avem, again
+        \item prezentam ceva rezultate. Plot/ chestii grafice sa se vada de ce e bun sau nu
+        \item discutie, aratam de ce K means e bun, de ce e bun
+        \item cap 6 Chestii bune chestii rele. Ce probleme am putea avea, si cum le-am putea rezolva
+        \item ce am ilustrat - ca e bun K means
+        \item cum ar ajuta rezultatele... pai... deja sunt folosite, lewl
+    \end{itemize}
+\end{itemize}
+}
+
+
+\chapter{Scientific Problem}
+\label{section:scientificProblem}
+
+
+\section{Problem definition}
+\label{section:problemDefinition}
+
+As stated before. When a retail shop wants to keep, or expand their clients base, the easiest way to do so is by "buying" their loyalty. And how do you get loyal customers? By giving them assurance that you have the products they need at a cost they can afford, or they are really happy with. 
+So how do you know what each client wants? Basically you don't. Or you can know, but this comes with a tremendous effort attached to it. You better observe their purchasing behaviour, and compare it to other clients so you are able to group them into similar categories, and then make appropriate suggestions for each category, not each client.
+\vspace{5mm} %5mm vertical space
+\\
+Why should this problem be solved by an intelligent algorithm? Because we, as humans don't have enough time and energy at our disposal to do this task. And since we have a great computing machine at our disposal instead, we may as well use it to do this task.
+The traditional (ancient) approach for this was measuring the RFM coefficient for the users and ranking them by this number.
+\vspace{5mm} %5mm vertical space
+\\
+The advantage of using K Means is that it is a fairly simple algorithm to implement, having a set of meaningful data. It requires minimum assistance from the programmer side, as he/she can easily analyze the correctness of the results and adjust the parameters accordingly. 
+The disadvantage is that if we don't have a good enough dataset our results may be not good enough or outright wrong. But in the case of e-commerce, a small dataset means that the business is fairly small and may not even require such analysis and/or effort for using Artificial Intelligence solutions
+\vspace{5mm} %5mm vertical space
+\\
+For our solution we are using K Means Clustering, which is an unsupervised learning algorithm. This means that we do not have to train our data with correct or incorrect labels, it just finds groups of similar entities. Of course, we do need to tend to it a bit, because the proper number of clusters must be found out by ourselves, through thorough testing and measuring different coefficients, but that is mostly all that we need to do, as there are already dedicated tools that implement most of the hard calculations that must be made.
+\vspace{5mm} %5mm vertical space
+\\
+The advantages are clear, we don't have to train our data, and given a big enough dataset almost assures us of decent results. As stated before, a well organised e-commerce business will mostly have this kind of dataset at it's disposal.
+\vspace{5mm} %5mm vertical space
+\\
+The disadvantage is that the possibility of a corrupt, too small or completely disorganised data is still there, but in this case we don't really have an actual solution. Only time and some human input from the company will make the use of an intelligent solution possible
+
+
+\chapter{State of the art/Related work}
+\label{chapter:stateOfArt}
+
+
+The theory of the methods utilised until now in order to solve the given problem.
+
+Answer the following questions for each piece of related work that addresses the same or a similar problem. 
+\begin{itemize}
+	\item What is their problem and method? 
+	\item How is your problem and method different? 
+	\item Why is your problem and method better?
+\end{itemize}
+
+In order to cite a given work you can use a bib file (see the example) and the $\ $ \textit{cite} command:
+\cite{kennedy1}, \cite{Koh06}, \cite{Berlekamp82}, \cite{Storn95}, \cite{firefox}.
+
+
+
+\chapter{Investigated approach}
+\label{chapter:proposedApproach}
+
+Describe your approach!
+
+Describe in reasonable detail the algorithm you are using to address this problem. A psuedocode description of the algorithm you are using is frequently useful. Trace through a concrete example, showing how your algorithm processes this example. The example should be complex enough to illustrate all of the important aspects of the problem but simple enough to be easily understood. If possible, an intuitively meaningful example is better than one with meaningless symbols.
+
+
+\chapter{Application (numerical validation)}
+\label{chapter:application}
+
+
+Explain the experimental methodology and the numerical results obtained with your approach and the state of art approache(s).
+
+Try to perform a comparison of several approaches.
+
+Statistical validation of the results. 
+\vspace{5mm} %5mm vertical space
+\\
+For this application we are using in the backscenes a typical K-Means algorithm for segmenting our users into different Clusters. These Clusters are made using our pre-given data that we got from the UCI website, along with some custom made features that we manually created. These features have in mind the RFM (Recency Frequency Monetary value) model that is mostly used. We have tried using different numbers of clusters, so we could test out the Silhouette and the ARI (adjusted rand index) values, and came up with the proper number of 4 clusters.
+
+
+\section{Methodology}
+\label{section:methodology}
+
+
+
+\begin{itemize}
+    \item Well there is no surefire way of testing our hypothesis, as we are not actually recommending items to a real client, but we are confident in our algorithm that it found real types of customers, and in a real world situation these recommendations will hold up
+    \item As for the scientific part of the question of evaluation, we tried measuring the Silhouette coefficient, the elbow method and the value of the ARI . As the silhouette coefficient was decreasing as the ARI was rising, we had to balance them out and came up with middle ground, or in this case a middle number of 4 clusters
+    
+	\item What are the dependent and independent variables? //TODO
+	\item For our test data we have used the data set offered by UCI (the Machine Learning Repository), that tracked the invoices of a large number of customers of a retail shop on a period of almost one year. The dataset is realistic, as each invoice holds all the proper information of an actual purchase of a customer. We have analyzed it and came up with the conclusion that some adjustments could be made, for example clearing out noise data, not-proper invoices, duplicates, etc. Competing methods, for example is manually going through each and every invoice, collecting it's data, finding out each customer's purchases and calculating the RFM coefficient. We are sure that using even an unsupervised learning algorithm is more efficient that the classical way of doing things
+\end{itemize}
+
+\section{Data}
+\label{section:data}
+
+The UCI OnlineRetail data is a straightforward collection of invoices that are given to us in an easy to use, organised spreadhsheet. 
+Contents
+\begin{itemize}
+    \item Invoice Number
+    \item Stock Code - These were tricky, because they were not in the same format, some of them even had letters at the end of the code. We supposed that they actually were variations of the same product and treated them accordingly
+    \item Item Description
+    \item Quantity - We had to check if there were negative quantities, as they were probably returns of the clients that may have not enjoyed the product
+    \item Invoice Date - very useful for Frequency feature
+    \item Unit Price - Again, the same issue with the Quantity, treated it accordingly
+    \item Customer ID - Some of the rows were having missing customer ID, maybe they were products bought from the actual, physical retail shop, but as we could not map them to a client, we tried to ignore them
+    \item Country - This was one of the less useful features that the dataset offered 
+
+\end{itemize}
+
+\section{Results}
+\label{section:results}
+
+Present the quantitative results of your experiments. Graphical data presentation such as graphs and histograms are frequently better than tables. What are the basic differences revealed in the data. Are they statistically significant?
+
+\section{Discussion}
+\label{section:discussion}
+
+\begin{itemize}
+	\item Is your hypothesis supported? 
+	\item What conclusions do the results support about the strengths and weaknesses of your method compared to other methods? 
+	\item How can the results be explained in terms of the underlying properties of the algorithm and/or the data. 
+\end{itemize}
+
+
+
+\chapter{Conclusion and future work}
+\label{chapter:concl}
+
+The main strength of the approach is that it is a fairy simple one, and with a bit of parameter "play" and analysis using some measurements of the previously mentioned coefficients (Silhouette and ARI) we can find a decent segmentation method.
+\vspace{5mm} %5mm vertical space
+\\
+The main drawback of our method is that it's (like most unsupervised algorithms) having issues when dealing with the cold -start problem. This problem is an infamous one, that relates to too little data being given to the algorithm and it not being able to correctly classify the elements. This can not really be overcame, we just need to patiently wait for the dataset to be large enough for us to use it. Only then we can hope for correct/ appropriate results
+\vspace{5mm} %5mm vertical space
+\\
+Nonetheless we have proved that the K Means algorithm Customer Segmentation is an efficient way of grouping similar customers into classes, and retrieve product suggestions as close as a 1 to 1 relationship between a shop and its client  
+\vspace{5mm} %5mm vertical space
+\\
+These results are not groundbreaking, as they are already used by most e-commerce companies, even though their approaches are fairly more complex or better suited for their business model. This approach, being simple enough can be actually implemented by new or small retails for a better relationship with their clients.
+
+
+\chapter{Latex examples}
+
+Item example: 
+
+\begin{itemize}
+	\item content of item1
+ 	\item content of item2
+ 	\item content of item3
+\end{itemize}
+
+
+
+Figure example 
+
+$\ldots$ (see Figure \ref{swarmsize})
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics{Fig/FitEvol.eps}}  
+	\caption{The evolution of the swarm size during the GA generations. This results were obtained for the $f_2$ test function with 5 dimensions.}
+	\label{swarmsize}
+\end{figure}
+
+
+Table example: (see Table \ref{tab3PSO})
+
+
+\begin{table}[htbp]
+	\caption{The parameters of the PSO algorithm (the micro level algorithm) used to compute the fitness of a GA chromosome.}
+	\label{tab3PSO}
+		\begin{center}
+			\begin{tabular}{p{220pt}c}
+
+				\textbf{Parameter}& \textbf{Value} \\
+				\hline\hline
+ 				Number of generations& 50 \\
+ 				Number of function evaluations/generation& 10 \\
+ 				Number of dimensions of the function to be optimized& 5 \\
+ 				Learning factor $c_{1}$& 2 \\
+ 				Learning factor $c_{2}$ & 1.8\\
+ 				Inertia weight& 0.5 + $\frac{rand()}{2}$\\
+		
+			\end{tabular}
+		\end{center}
+\end{table}
+
+Algorithm example 
+
+$\ldots$ (see Algorithm \ref{NGalg}).
+
+
+\algsetup{indent=1em, linenosize=\footnotesize}
+
+\begin{algorithm}
+	\caption{SGA - Spin based Genetic AQlgorithm}
+	\label{NGalg}
+		\begin{algorithmic}
+
+
+			\STATE \textbf{BEGIN}
+  		\STATE @ Randomly create the initial GA population.
+  		\STATE @ Compute the fitness of each individual.
+  		\FOR{i=1 TO NoOfGenerations}
+  			\FOR{j=1 TO PopulationSize}
+  				\STATE p $\leftarrow$ RandomlySelectParticleFromGrid();
+  				\STATE n $\leftarrow$ RandomlySelectParticleFromNeighbors(p);
+  				\STATE @ Crossover(p, n, off);
+  				\STATE @ Compute energy $\Delta H$
+  				\IF {$\Delta H$ satisfy the Ising condition}
+  					\STATE @ Replace(p,off);
+  				\ENDIF
+  			\ENDFOR
+  		\ENDFOR
+  		\STATE \textbf{END}
+\end{algorithmic}
+\end{algorithm}
+
+
+\bibliographystyle{plain}
+\bibliography{BibAll}
+
+\end{document}
