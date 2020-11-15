@@ -1,5 +1,5 @@
 <div>
-    <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
+    <form [formGroup]="registerForm" (ngSubmit)="registerUser(registerForm.value)">
         <div>
             <input type="text" placeholder="Username" formControlName="username">
         </div>
@@ -7,8 +7,8 @@
             <input type="password" placeholder="Password" formControlName="password">
         </div>
         <button type="submit">
-            Login
+            Register
         </button>
     </form>
-    <button (click) = "openRegister()">Register</button>
+    <button (click) = "openLogin()">Login</button>
 </div>

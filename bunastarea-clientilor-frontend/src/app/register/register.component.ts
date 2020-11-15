@@ -4,33 +4,33 @@ import { Router } from "@angular/router";
 import { RepositoryService } from "../services/repository.service";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 
-  public loginForm : FormGroup;
+  public registerForm : FormGroup;
 
   constructor(private readonly repositoryService: RepositoryService, private router: Router) { }
 
   ngOnInit(): void {
-    this.loginForm = new FormGroup( {
+    this.registerForm = new FormGroup( {
       username: new FormControl(''),
       password: new FormControl('')
     });
   }
 
-  public loginUser(loginFormValue) {
-    this.repositoryService.create("login",loginFormValue).subscribe((res :any) => {
+  public registerUser(registerFormValue) {
+    this.repositoryService.create("addUser",registerFormValue).subscribe((res : any) => {
       if (res.msg !== 'Failed') {
         this.router.navigate(["/home"]);
       }
     })
   }
 
-  public openRegister() {
-    this.router.navigate(["/register"]);
+  public openLogin() {
+    this.router.navigate(["/login"]);
   }
 
 }
