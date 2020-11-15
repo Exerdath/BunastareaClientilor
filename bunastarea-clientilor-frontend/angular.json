@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "bunastarea-clientilor-frontend"
+    }
+  },
+  "defaultProject": "bunastarea-clientilor-frontend",
+  "cli": {
+    "analytics": "a98e3e5a-17c8-467c-90ba-3c3efcdce087"
+  }
 }
