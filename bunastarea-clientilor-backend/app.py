@@ -13,6 +13,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
+app_service = DataAnalysis()
 
 
 class Usersv2(db.Model):
@@ -44,7 +45,10 @@ def add_user():
     if db.session.query(Usersv2).filter_by(username=username).first() is not None:
         return jsonify({'msg': 'User already exists'}), 400
 
-    user = Usersv2(username=username, password_hash=password, isAdmin=False, customerId=1)
+    last_inserted_user = db.session.query(Usersv2).order_by(Usersv2.customerId.desc()).first()
+    last_customer_id = last_inserted_user.customerId
+    new_customer_id = app_service.get_new_customer_id(last_customer_id)
+    user = Usersv2(username=username, password_hash=password, isAdmin=False, customerId=new_customer_id)
     db.session.add(user)
     db.session.commit()
     return jsonify({"user": username, "password": password}), 200
@@ -84,36 +88,31 @@ def login():
 
 @app.route('/top5buyers', methods=['GET'])
 def buyers5():
-    data_analyzer = DataAnalysis()
-    the_buyers = data_analyzer.get_top_5_buying_customers()
+    the_buyers = app_service.get_top_5_buying_customers()
     return the_buyers
 
 
 @app.route("/avgtop5buyers",methods=['GET'])
 def avg_buyers5():
-    data_analyzer= DataAnalysis()
-    the_buyers=data_analyzer.avg_invoice_spent_top_5_customers()
+    the_buyers=app_service.avg_invoice_spent_top_5_customers()
     return the_buyers
 
 
 @app.route("/avgbyid/<int:user_id>", methods=['GET'])
 def avg_spend_by_id(user_id):
-    data_analyzer = DataAnalysis()
-    the_buyers = data_analyzer.avg_spent_per_invoice_by_id(user_id)
+    the_buyers = app_service.avg_spent_per_invoice_by_id(user_id)
     return the_buyers
 
 
 @app.route("/lastinvoicesbyid/<int:user_id>", methods=['GET'])
 def last_invoices_by_id(user_id):
-    data_analyzer = DataAnalysis()
-    the_buyers = data_analyzer.last_invoices_by_id(user_id)
+    the_buyers = app_service.last_invoices_by_id(user_id)
     return the_buyers
 
 
 @app.route("/suggestions/<int:user_id>", methods=['GET'])
 def get_suggestions(user_id):
-    data_analyzer = DataAnalysis()
-    the_result = data_analyzer.get_suggestions(user_id)
+    the_result = app_service.get_suggestions(user_id)
     return json.dumps(the_result)
 
 

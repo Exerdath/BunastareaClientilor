@@ -195,9 +195,9 @@ class DataAnalysis:
     def get_suggestions(self, customer_id):
         customer_cluster = self.customer_profile.loc[self.customer_profile['CustomerID'] == customer_id]['Clusters'].iloc[0]
         customer_monetary_value = self.customer_profile.loc[self.customer_profile['CustomerID'] == customer_id]['Monetary Value'].iloc[0]
-        top10ClusterUsers = self.customer_profile.loc[self.customer_profile['Clusters'] == customer_cluster].loc[abs(self.customer_profile['Monetary Value'] - customer_monetary_value) < 100].iloc[:10].values.tolist()
-        productsList = []
-        for customer in top10ClusterUsers:
+        top_ten_cluster_users = self.customer_profile.loc[self.customer_profile['Clusters'] == customer_cluster].loc[abs(self.customer_profile['Monetary Value'] - customer_monetary_value) < 100].iloc[:10].values.tolist()
+        products_list = []
+        for customer in top_ten_cluster_users:
             customer_in_customers = self.customers.sort_values(by=['InvoiceDate'], ascending=False).loc[self.customers['CustomerID'] == customer[0]].iloc[0]
             product_name = customer_in_customers['Description']
             product_stock_code = customer_in_customers['StockCode']
@@ -207,5 +207,9 @@ class DataAnalysis:
                 "product_stock_code": str(product_stock_code),
                 "product_price": str(product_price)
             }
-            productsList.append(product)
-        return productsList
+            products_list.append(product)
+        return products_list
+
+    def get_new_customer_id(self, last_customer_id):
+        new_customer_id_data_frame = self.customer_profile.sort_values(by=['CustomerID'], ascending=True).loc[self.customers['CustomerID'] > last_customer_id].iloc[0]
+        return new_customer_id_data_frame['CustomerID']
