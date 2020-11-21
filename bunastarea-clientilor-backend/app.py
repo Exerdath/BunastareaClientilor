@@ -4,6 +4,7 @@ from flask_cors import CORS
 from customerspy import DataAnalysis
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
+import json
 
 app = Flask(__name__)
 CORS(app)
@@ -107,6 +108,13 @@ def last_invoices_by_id(user_id):
     data_analyzer = DataAnalysis()
     the_buyers = data_analyzer.last_invoices_by_id(user_id)
     return the_buyers
+
+
+@app.route("/suggestions/<int:user_id>", methods=['GET'])
+def get_suggestions(user_id):
+    data_analyzer = DataAnalysis()
+    the_result = data_analyzer.get_suggestions(user_id)
+    return json.dumps(the_result)
 
 
 if __name__ == '__main__':

@@ -9,6 +9,7 @@ import pickle
 import os.path
 from os import path
 
+
 class DataAnalysis:
 
     def __init__(self):
@@ -190,3 +191,21 @@ class DataAnalysis:
 
     def last_invoices_by_id(self, customer_id):
         return self.customers.sort_values(by=['InvoiceDate'], ascending = False).loc[self.customers['CustomerID'] == customer_id].iloc[:5].to_json()
+
+    def get_suggestions(self, customer_id):
+        customer_cluster = self.customer_profile.loc[self.customer_profile['CustomerID'] == customer_id]['Clusters'].iloc[0]
+        customer_monetary_value = self.customer_profile.loc[self.customer_profile['CustomerID'] == customer_id]['Monetary Value'].iloc[0]
+        top10ClusterUsers = self.customer_profile.loc[self.customer_profile['Clusters'] == customer_cluster].loc[abs(self.customer_profile['Monetary Value'] - customer_monetary_value) < 100].iloc[:10].values.tolist()
+        productsList = []
+        for customer in top10ClusterUsers:
+            customer_in_customers = self.customers.sort_values(by=['InvoiceDate'], ascending=False).loc[self.customers['CustomerID'] == customer[0]].iloc[0]
+            product_name = customer_in_customers['Description']
+            product_stock_code = customer_in_customers['StockCode']
+            product_price = customer_in_customers['UnitPrice']
+            product= {
+                "product_name": str(product_name),
+                "product_stock_code": str(product_stock_code),
+                "product_price": str(product_price)
+            }
+            productsList.append(product)
+        return productsList
