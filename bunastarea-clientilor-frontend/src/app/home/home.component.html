@@ -1,6 +1,33 @@
-<div>
-    <div></div>
-
-
-
+<div><button (click)="logOut()">Log Out</button>
+    <div>
+        <br>
+        <div>Average orders: {{averageSpent}}</div>
+        <div>Total orders: {{totalOrders}}</div>
+        <br>
+        <div>
+            <div>Suggestions:</div> 
+            <table>
+                <th>Product name</th>
+                <th>Product stock code</th>
+                <th>Price</th>
+                <tr *ngFor="let suggestion of suggestions">
+                    <td>{{suggestion.product_name}}</td>
+                    <td>{{suggestion.product_stock_code}}</td>
+                    <td>{{suggestion.product_price}}</td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div>
+            <div>Last invoices:</div> 
+            <table>
+                <!-- <th>Product name</th>
+                <th>Product stock code</th>
+                <th>Price</th> -->
+                <!-- <tr *ngFor="let invoice of lastInvoices">
+                     <td>{{invoice.description}}</td> 
+                </tr> -->
+            </table>
+        </div>
+    </div>
 </div>

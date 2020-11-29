@@ -15,6 +15,9 @@ export class LoginComponent implements OnInit {
   constructor(private readonly repositoryService: RepositoryService, private router: Router) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem("user")) {
+      this.router.navigate(["/home"]);
+    }
     this.loginForm = new FormGroup( {
       username: new FormControl(''),
       password: new FormControl('')
@@ -23,10 +26,11 @@ export class LoginComponent implements OnInit {
 
   public loginUser(loginFormValue) {
     this.repositoryService.create("login",loginFormValue).subscribe((res :any) => {
-      if (res.msg !== 'Failed') {
-        this.router.navigate(["/home"]);
-      }
-    })
+      localStorage.setItem("user", JSON.stringify(res));
+      this.router.navigate(["/home"]);
+    }, () => {
+      alert("Wrong username or password");
+    });
   }
 
   public openRegister() {
