@@ -177,20 +177,78 @@ class DataAnalysis:
         return total_orders
 
     def get_top_5_buying_customers(self):
-        return self.customer_profile.sort_values(by=['total_orders'], ascending=False).iloc[:5].to_json()
+        buyers = self.customer_profile.sort_values(by=['total_orders'], ascending=False).iloc[:5]
+        top_buyers = []
+        for index, row in buyers.iterrows():
+            buyer = {
+                "CustomerID": row["CustomerID"],
+                "Frequency": row["Frequency"],
+                "MonetaryValue": float("{:.2f}".format(row["Monetary Value"])),
+                "Recency": row["Recency"],
+                "Clusters": row["Clusters"],
+                "TotalOrders": row["total_orders"],
+            }
+            top_buyers.append(buyer)
+        return top_buyers
 
     def avg_invoice_spent_top_5_customers(self):
         customer_profile_avg = copy.deepcopy(self.customer_profile)
         customer_profile_avg['avg_spend'] = self.customer_profile['Monetary Value']/self.customer_profile['total_orders']
-        return customer_profile_avg.sort_values(by=['avg_spend'], ascending=False).iloc[:5].to_json()
+        customers_avg = customer_profile_avg.sort_values(by=['avg_spend'], ascending=False).iloc[:5]
+        customers_avg_list = []
+        for index, row in customers_avg.iterrows():
+            avg_cutomser = {
+                "CustomerID": row["CustomerID"],
+                "Frequency": row["Frequency"],
+                "MonetaryValue": float("{:.2f}".format(row["Monetary Value"])),
+                "Recency": row["Recency"],
+                "Clusters": row["Clusters"],
+                "TotalOrders": row["total_orders"],
+                "AvgSpend": float("{:.2f}".format(row["avg_spend"])),
+            }
+            customers_avg_list.append(avg_cutomser)
+        return customers_avg_list
 
     def avg_spent_per_invoice_by_id(self, customer_id):
         customer_profile_avg = copy.deepcopy(self.customer_profile)
         customer_profile_avg['avg_spend'] = self.customer_profile['Monetary Value'] / self.customer_profile['total_orders']
-        return customer_profile_avg.loc[customer_profile_avg['CustomerID'] == customer_id].to_json()
+        avg_by_user = customer_profile_avg.loc[customer_profile_avg['CustomerID'] == customer_id]
+        avg_spent_list = []
+        for index, row in avg_by_user.iterrows():
+            avg_spent = {
+                "CustomerID": row["CustomerID"],
+                "Frequency": row["Frequency"],
+                "MonetaryValue": row["Monetary Value"],
+                "Recency": row["Recency"],
+                "Clusters": row["Clusters"],
+                "TotalOrders": row["total_orders"],
+                "AvgSpend": float("{:.2f}".format(row["avg_spend"])),
+            }
+            avg_spent_list.append(avg_spent)
+        return avg_spent_list
 
     def last_invoices_by_id(self, customer_id):
-        return self.customers.sort_values(by=['InvoiceDate'], ascending = False).loc[self.customers['CustomerID'] == customer_id].iloc[:5].to_json()
+        last_invoices = self.customers.sort_values(by=['InvoiceDate'], ascending = False).drop_duplicates(['InvoiceNo']).loc[self.customers['CustomerID'] == customer_id].iloc[:5]
+        top_last_invoices = []
+        for index, row in last_invoices.iterrows():
+            product = {
+                "CustomerID": row["CustomerID"],
+                "InvoiceNo": row["InvoiceNo"],
+                "StockCode": row["StockCode"],
+                "Description": row["Description"],
+                "Quantity": row["Quantity"],
+                "InvoiceDate": str(row["InvoiceDate"]),
+                "UnitPrice": row["UnitPrice"],
+                "Country": row["Country"],
+                "TotalForinvoice": float("{:.2f}".format(row["total_for_item"])),
+                "InvoicePrice": float("{:.2f}".format(row["invoice_price"])),
+                "TimeDiff": row["time_diff"],
+                "TotalQuantity": row["total_quantity"],
+                "Clusters": row["Clusters"],
+                "TotalOrders": row["total_orders"],
+            }
+            top_last_invoices.append(product)
+        return top_last_invoices
 
     def get_suggestions(self, customer_id):
         customer_cluster = self.customer_profile.loc[self.customer_profile['CustomerID'] == customer_id]['Clusters'].iloc[0]
@@ -211,5 +269,5 @@ class DataAnalysis:
         return products_list
 
     def get_new_customer_id(self, last_customer_id):
-        new_customer_id_data_frame = self.customer_profile.sort_values(by=['CustomerID'], ascending=True).loc[self.customers['CustomerID'] > last_customer_id].iloc[0]
+        new_customer_id_data_frame = self.customer_profile.sort_values(by=['CustomerID'], ascending=True).loc[self.customer_profile['CustomerID'] > last_customer_id].iloc[0]
         return new_customer_id_data_frame['CustomerID']

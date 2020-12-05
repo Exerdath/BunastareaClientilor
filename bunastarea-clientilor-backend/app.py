@@ -89,25 +89,25 @@ def login():
 @app.route('/top5buyers', methods=['GET'])
 def buyers5():
     the_buyers = app_service.get_top_5_buying_customers()
-    return the_buyers
+    return json.dumps(the_buyers)
 
 
 @app.route("/avgtop5buyers",methods=['GET'])
 def avg_buyers5():
     the_buyers=app_service.avg_invoice_spent_top_5_customers()
-    return the_buyers
+    return json.dumps(the_buyers)
 
 
 @app.route("/avgbyid/<int:user_id>", methods=['GET'])
 def avg_spend_by_id(user_id):
     the_buyers = app_service.avg_spent_per_invoice_by_id(user_id)
-    return the_buyers
+    return json.dumps(the_buyers)
 
 
 @app.route("/lastinvoicesbyid/<int:user_id>", methods=['GET'])
 def last_invoices_by_id(user_id):
     the_buyers = app_service.last_invoices_by_id(user_id)
-    return the_buyers
+    return json.dumps(the_buyers)
 
 
 @app.route("/suggestions/<int:user_id>", methods=['GET'])
