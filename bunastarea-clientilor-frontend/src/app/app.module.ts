@@ -9,15 +9,13 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { RepositoryService } from "./services/repository.service";
 import { HttpClientModule } from "@angular/common/http";
 import { RegisterComponent } from './register/register.component';
-import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent,
-    NavbarComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
