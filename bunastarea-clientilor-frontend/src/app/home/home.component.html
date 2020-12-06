@@ -21,12 +21,34 @@
         <div>
             <div>Last invoices:</div> 
             <table>
-                <!-- <th>Product name</th>
-                <th>Product stock code</th>
-                <th>Price</th> -->
-                <!-- <tr *ngFor="let invoice of lastInvoices">
-                     <td>{{invoice.description}}</td> 
-                </tr> -->
+                <th>Description</th>
+                <th>Stock code</th>
+                <th>Invoice number</th>
+                <th>Invoice date</th>
+                <th>Invoice price</th>
+                <th>Total for invoice</th>
+                <th>Unit price</th>
+                <th>Quantity</th>
+                <th>Country</th>
+                <th>Time difference</th>
+                <th>Total quantity</th>
+                <th>Total orders</th>
+                <th>Clusters</th>
+                <tr *ngFor="let invoice of lastInvoices">
+                    <td>{{invoice.Description}}</td>
+                    <td>{{invoice.StockCode}}</td> 
+                    <td>{{invoice.InvoiceNo}}</td> 
+                    <td>{{invoice.InvoiceDate}}</td> 
+                    <td>{{invoice.InvoicePrice}}</td> 
+                    <td>{{invoice.TotalForinvoice}}</td> 
+                    <td>{{invoice.UnitPrice}}</td> 
+                    <td>{{invoice.Quantity}}</td> 
+                    <td>{{invoice.Country}}</td> 
+                    <td>{{invoice.TimeDiff}}</td> 
+                    <td>{{invoice.TotalQuantity}}</td> 
+                    <td>{{invoice.TotalOrders}}</td> 
+                    <td>{{invoice.Clusters}}</td> 
+                </tr>
             </table>
         </div>
     </div>
