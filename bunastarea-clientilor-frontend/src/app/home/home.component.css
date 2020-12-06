@@ -2,3 +2,23 @@
 body {
     margin: 0;
 }
+
+.card.card-1 {
+    background: linear-gradient(90deg, rgba(103, 42, 144, 1) 0%, rgba(253, 29, 29, 1) 39%, rgba(252, 161, 69, 1) 100%);
+    color: white;
+    background-size: cover;
+    /* margin: 0 100px; */
+    height: 127px;
+}
+
+.card.card-2 {
+    background: linear-gradient(90deg, rgba(103, 42, 144, 1) 0%, rgba(253, 29, 29, 1) 39%, rgba(252, 161, 69, 1) 100%);
+    color: white;
+    background-size: cover;
+    height: 127px;
+}
+
+td,
+h4 {
+    color: white;
+}

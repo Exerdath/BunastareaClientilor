@@ -6,6 +6,10 @@ body {
     background: linear-gradient(to right, #b92b27, #1565c0)
 }
 
+.card {
+    background-color: #1f364d;
+}
+
 .box {
     width: 500px;
     padding: 40px;

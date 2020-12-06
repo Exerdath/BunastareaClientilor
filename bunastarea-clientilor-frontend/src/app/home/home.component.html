@@ -1,55 +1,117 @@
-<div><button (click)="logOut()">Log Out</button>
-    <div>
-        <br>
-        <div>Average orders: {{averageSpent}}</div>
-        <div>Total orders: {{totalOrders}}</div>
-        <br>
-        <div>
-            <div>Suggestions:</div> 
-            <table>
-                <th>Product name</th>
-                <th>Product stock code</th>
-                <th>Price</th>
-                <tr *ngFor="let suggestion of suggestions">
-                    <td>{{suggestion.product_name}}</td>
-                    <td>{{suggestion.product_stock_code}}</td>
-                    <td>{{suggestion.product_price}}</td>
-                </tr>
-            </table>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/home">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item active mr-5">
+                <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <button class="btn btn-secondary" (click)="logOut()"><i class="fas fa-sign-out-alt"></i>Log Out</button>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div>
+    <br>
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-4">
+            <div class="card card-1 mr-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Average orders:</h5>
+                    <p class="card-text text-center">{{averageSpent}}</p>
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+            </div>
         </div>
-        <br>
+        <div class="col-sm-4">
+            <div class="card card-2 ml-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Total orders:</h5>
+                    <p class="card-text text-center">{{totalOrders}}</p>
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div>
         <div>
-            <div>Last invoices:</div> 
-            <table>
-                <th>Description</th>
-                <th>Stock code</th>
-                <th>Invoice number</th>
-                <th>Invoice date</th>
-                <th>Invoice price</th>
-                <th>Total for invoice</th>
-                <th>Unit price</th>
-                <th>Quantity</th>
-                <th>Country</th>
-                <th>Time difference</th>
-                <th>Total quantity</th>
-                <th>Total orders</th>
-                <th>Clusters</th>
-                <tr *ngFor="let invoice of lastInvoices">
-                    <td>{{invoice.Description}}</td>
-                    <td>{{invoice.StockCode}}</td> 
-                    <td>{{invoice.InvoiceNo}}</td> 
-                    <td>{{invoice.InvoiceDate}}</td> 
-                    <td>{{invoice.InvoicePrice}}</td> 
-                    <td>{{invoice.TotalForinvoice}}</td> 
-                    <td>{{invoice.UnitPrice}}</td> 
-                    <td>{{invoice.Quantity}}</td> 
-                    <td>{{invoice.Country}}</td> 
-                    <td>{{invoice.TimeDiff}}</td> 
-                    <td>{{invoice.TotalQuantity}}</td> 
-                    <td>{{invoice.TotalOrders}}</td> 
-                    <td>{{invoice.Clusters}}</td> 
-                </tr>
-            </table>
+            <h4 class="text-center mb-4 mt-5">
+                Suggestions
+            </h4>
+        </div>
+        <div class="col-12 d-flex">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-center">Product name</th>
+                            <th class="text-center">Product stock code</th>
+                            <th class="text-center">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let suggestion of suggestions">
+                            <td class="text-center">{{suggestion.product_name}}</td>
+                            <td class="text-center">{{suggestion.product_stock_code}}</td>
+                            <td class="text-center">{{suggestion.product_price}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+    <br>
+    <div>
+        <div>
+            <h4 class="text-center mb-4 mt-5">
+                Last invoices
+            </h4>
+        </div>
+        <div class="col-12 d-flex">
+            <div class="col-12">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-center">Description</th>
+                            <th class="text-center">Stock code</th>
+                            <th class="text-center">Invoice number</th>
+                            <th class="text-center">Invoice date</th>
+                            <th class="text-center">Invoice price</th>
+                            <th class="text-center">Total for invoice</th>
+                            <th class="text-center">Unit price</th>
+                            <th class="text-center">Quantity</th>
+                            <th class="text-center">Country</th>
+                            <th class="text-center">Time difference</th>
+                            <th class="text-center">Total quantity</th>
+                            <th class="text-center">Total orders</th>
+                            <th class="text-center">Clusters</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let invoice of lastInvoices">
+                            <td class="text-center">{{invoice.Description}}</td>
+                            <td class="text-center">{{invoice.StockCode}}</td>
+                            <td class="text-center">{{invoice.InvoiceNo}}</td>
+                            <td class="text-center">{{invoice.InvoiceDate}}</td>
+                            <td class="text-center">{{invoice.InvoicePrice}}</td>
+                            <td class="text-center">{{invoice.TotalForinvoice}}</td>
+                            <td class="text-center">{{invoice.UnitPrice}}</td>
+                            <td class="text-center">{{invoice.Quantity}}</td>
+                            <td class="text-center">{{invoice.Country}}</td>
+                            <td class="text-center">{{invoice.TimeDiff}}</td>
+                            <td class="text-center">{{invoice.TotalQuantity}}</td>
+                            <td class="text-center">{{invoice.TotalOrders}}</td>
+                            <td class="text-center">{{invoice.Clusters}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
