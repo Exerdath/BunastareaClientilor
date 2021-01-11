@@ -10,3 +10,6 @@ In terminal
 set APP_FLASK=app.py
 set APP_ENV=development
 flask run
+
+Presentation:
+https://docs.google.com/presentation/d/1dPLdaL14yxifmqBR0Oxa7TZhUwT-VzMgKD7dGRCDSNw/edit?usp=sharing
